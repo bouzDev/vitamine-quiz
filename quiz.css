@@ -1,0 +1,207 @@
+/* :root {
+    --blue: #051528;
+    --white: #ffffff;
+    --green: #55daba;
+    --gold: #cbb18a;
+    --offwhite: #f5f5f1;
+    --serif: 'Cormorant', Serif;
+    --sanSerif: 'Typold', Sans-serif;
+}
+
+body {
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.tba-quiz {
+    position: relative;
+    padding: 0px 20px 20px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.tba-quiz h1 {
+    font-family: var(--serif);
+    font-size: 32px;
+    text-align: center;
+    height: 160px;
+    display: grid;
+    align-content: center;
+    margin-bottom: 50px;
+}
+
+.tba-quiz form fieldset > legend {
+    font-family: var(--serif);
+    font-size: 32px;
+    text-align: center;
+}
+
+.tba-quiz p {
+    font-family: var(--sanSerif);
+    font-size: 16px;
+    max-width: 650px;
+}
+
+.tba-quiz::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background-color: var(--green);
+}
+
+.tba-quiz nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: 650px;
+}
+
+.tba-quiz nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tba-quiz nav ul button {
+    overflow: hidden;
+    all: unset;
+    background-color: var(--offwhite);
+    width: 100%;
+    font-family: var(--sanSerif);
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.tba-quiz nav ul button span {
+    mix-blend-mode: difference;
+    z-index: 1;
+    color: var(--offwhite);
+}
+
+.tba-quiz nav ul button img {
+    mix-blend-mode: difference;
+    z-index: 1;
+}
+
+.tba-quiz nav ul button .progress {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--blue);
+    transition: width 2s ease-in;
+}
+
+.tba-quiz nav ul button:hover .progress {
+    width: 100%;
+}
+
+nav.start-quiz {
+    top: 0;
+    transform: translateY(20px);
+}
+
+nav.start-quiz ul {
+    flex-direction: row;
+}
+
+nav.start-quiz ul li {
+    width: 45px;
+}
+
+nav.start-quiz ul button {
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+nav.start-quiz ul .tba-active {
+    flex-grow: 1;
+}
+
+nav.start-quiz ul button span {
+    display: none;
+}
+
+.tba-quiz nav ul button .progress {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--blue);
+    transition: width 2s ease-in;
+}
+
+.tba-quiz nav ul button:hover .progress {
+    width: 100%;
+}
+
+.tba-introduction {
+    display: none;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.tba-introduction p {
+    flex-grow: 1;
+}
+
+#tba-start-quiz {
+    all: unset;
+    height: 56px;
+    background-color: var(--green);
+    padding: 0px 25px;
+    display: grid;
+    align-content: center;
+    width: fit-content;
+    font-family: var(--sanSerif);
+    align-self: flex-end;
+    justify-self: flex-end;
+    cursor: pointer;
+}
+
+form > fieldset {
+    display: none;
+}
+
+form > fieldset:nth-of-type(1) {
+    display: block;
+}
+
+form > fieldset > * {
+    display: none;
+}
+
+form > fieldset > *:nth-of-type(1) {
+    display: block;
+}
+
+.tba-results {
+    display: none;
+}
+
+.elementor-nav-menu--dropdown.elementor-nav-menu__container ul > li > a {
+    display: flex;
+} */
