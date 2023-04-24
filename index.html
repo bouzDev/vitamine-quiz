@@ -57,46 +57,44 @@
             <section class="tba-introduction">
                 <h1>Weet precies wat je nodig hebt</h1>
                 <p>
-                    Binnen 3 minuten krijg jij persoonlijk supplement advies.
-                    Dat doe je door vragen te beantwoorden vanuit onderstaand 4
-                    onderdelen.
+                    Binnen 2 minuten krijg je advies welke supplementen jij
+                    nodig hebt. Dit doe je door vragen te beantwoorden uit
+                    onderstaande 4 onderdelen.
                 </p>
-
-                <button id="tba-start-quiz">Doe de test</button>
             </section>
 
             <form action="/action_page.php">
-                <fieldset>
+                <fieldset class="step-profile">
                     <legend>Profiel</legend>
-                    <fieldset>
+                    <fieldset class="step-item">
                         <label for="naam">Jouw naam</label>
                         <input
                             type="text"
                             id="naam"
                             name="naam"
                             placeholder="Naam"
-                            value="Test Persoon"
                         />
 
                         <label for="leeftijd">Geboortedatum</label>
-                        <input type="date" id="leeftijd" name="leeftijd"/>
+                        <input type="date" id="leeftijd" name="leeftijd" />
 
                         <label for="geslacht">Geslacht</label>
                         <select name="geslacht" id="geslacht">
-                            <option value="">Kies</option>
-                            <option selected value="vrouw">Vrouw</option>
+                            <option selected="true" disabled="disabled">
+                                Kies
+                            </option>
+                            <option value="vrouw">Vrouw</option>
                             <option value="man">Man</option>
                         </select>
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="step-item">
                         <label for="lengte">Wat is je lengte?</label>
                         <input
                             type="number"
                             id="lengte"
                             name="lengte"
                             placeholder="In centimeter"
-                            value="170"
                         />
 
                         <label for="gewicht">Wat is jouw gewicht?</label>
@@ -105,7 +103,6 @@
                             id="gewicht"
                             name="gewicht"
                             placeholder="In kilogram"
-                            value="80"
                         />
 
                         <label for="huidtype"
@@ -113,13 +110,13 @@
                         >
                         <select name="huidtype" id="huidtype">
                             <option value="">Kies</option>
-                            <option selected value="licht">Licht</option>
+                            <option value="licht">Licht</option>
                             <option value="getint">Getint</option>
                             <option value="donker">Donker</option>
                         </select>
                     </fieldset>
 
-                    <div>
+                    <fieldset class="step-item">
                         <h2>Dit is jouw BMI</h2>
                         <p>
                             Body Mass Index, of BMI, is een meting die wordt
@@ -127,7 +124,7 @@
                             gewichtsbereik voor jouw lengte bevindt.
                         </p>
 
-                        <div>
+                        <div class="bmi-calc">
                             <svg
                                 id="color-range"
                                 width="261"
@@ -180,56 +177,74 @@
                         </div>
 
                         <p id="bmi-resultaat">
-                            Je hebt ernstig overgewicht (morbide obesitas). Dat
-                            betekent een zeer hoog risico op hart- en
-                            vaatziekten.
+                            Je hebt ernstig overgewicht. Dat betekent een zeer
+                            hoog risico op hart- en vaatziekten.
                         </p>
-                    </div>
+                    </fieldset>
                 </fieldset>
-                <fieldset>
+                <fieldset class="step-food">
                     <legend>Voeding</legend>
-                    <fieldset>
+                    <fieldset class="step-item">
                         <legend>Wat voor dieet volg jij?</legend>
+                        <div class="input-wrapper">
+                            <input
+                                type="radio"
+                                id="vegan"
+                                name="dieet"
+                                value="vegan"
+                            />
+                            <label for="vegan">
+                                <img src="placeholder.svg" alt="" />
+                                Vegan</label
+                            >
 
-                        <input
-                            type="radio"
-                            id="vegan"
-                            name="dieet"
-                            value="vegan"
-                            checked
-                        />
-                        <label for="vegan">Vegan</label>
-                        <input
-                            type="radio"
-                            id="vegetarisch"
-                            name="dieet"
-                            value="vegetarisch"
-                        />
-                        <label for="vegetarisch">Vegetarisch</label>
-                        <input
-                            type="radio"
-                            id="anders"
-                            name="dieet"
-                            value="anders"
-                        />
-                        <label for="anders">Geen/anders</label>
+                            <input
+                                type="radio"
+                                id="vegetarisch"
+                                name="dieet"
+                                value="vegetarisch"
+                            />
+                            <label for="vegetarisch">
+                                <img
+                                    src="placeholder.svg"
+                                    alt=""
+                                />Vegetarisch</label
+                            >
+
+                            <input
+                                type="radio"
+                                id="anders"
+                                name="dieet"
+                                value="anders"
+                            />
+                            <label for="anders">
+                                <img
+                                    src="placeholder.svg"
+                                    alt=""
+                                />Geen/anders</label
+                            >
+                        </div>
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="step-item">
                         <label for="vlees"
                             >Hoe vaak in de week eet je vlees?</label
                         >
                         <div class="range-container">
                             <span class="range-label min-label">0</span>
 
-                            <input
-                                type="range"
-                                id="vlees"
-                                name="vlees"
-                                min="0"
-                                max="7"
-                                value="1"
-                            />
+                            <div class="range-in-out">
+                                <input
+                                    type="range"
+                                    id="vlees"
+                                    name="vlees"
+                                    min="0"
+                                    max="7"
+                                />
+
+                                <output for="vlees">Schuif</output>
+                            </div>
+
                             <span class="range-label max-label">7</span>
                         </div>
 
@@ -240,37 +255,47 @@
                             >Zoals: haring, makreel, sardientjes en
                             anjosvis.</small
                         >
+
                         <div class="range-container">
                             <span class="range-label min-label">0</span>
 
-                            <input
-                                type="range"
-                                id="vis"
-                                name="vis"
-                                min="0"
-                                max="7"
-                                value="1"
-                            />
+                            <div class="range-in-out">
+                                <input
+                                    type="range"
+                                    id="vis"
+                                    name="vis"
+                                    min="0"
+                                    max="7"
+                                />
+
+                                <output for="vis">Schuif</output>
+                            </div>
+
                             <span class="range-label max-label">7</span>
                         </div>
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="step-item">
                         <label for="groente"
                             >Hoeveel gram groenten eet je per dag?</label
                         >
+
                         <div class="range-container">
                             <span class="range-label min-label">0</span>
 
-                            <input
-                                type="range"
-                                id="groente"
-                                name="groente"
-                                min="0"
-                                max="1000"
-                                step="100"
-                                value="1"
-                            />
+                            <div class="range-in-out">
+                                <input
+                                    type="range"
+                                    id="groente"
+                                    name="groente"
+                                    min="0"
+                                    max="1000"
+                                    step="100"
+                                />
+
+                                <output for="groente">Schuif</output>
+                            </div>
+
                             <span class="range-label max-label">1000</span>
                         </div>
 
@@ -280,12 +305,12 @@
                             <option value="">Kies</option>
                             <option value="nooit">Nooit</option>
                             <option value="soms">Soms</option>
-                            <option selected value="regelmatig">Regelmatig</option>
+                            <option value="regelmatig">Regelmatig</option>
                             <option value="vaak">Vaak</option>
                         </select>
                     </fieldset>
 
-                    <div>
+                    <fieldset class="step-item">
                         <h2>Je bent wat je eet.</h2>
                         <p>
                             Voeding speelt een cruciale rol in onze gezondheid
@@ -295,119 +320,144 @@
                         </p>
 
                         <p id="voeding-resultaat">
-                            Wist je dat je lichaam plantaardig omega-3 (ALA),
-                            bijna niet kan omzetten naar de juiste vormen EPA en
-                            DHA? In de meest gunstige gevallen is dit 10% voor
-                            EPA en 5% voor DHA, maar bij de meeste mensen ligt
-                            dit veel lager. Daarom is het juist ook voor
-                            vegetariërs en veganisten belangrijk om extra
-                            Omega-3 in te nemen om tekorten aan te vullen en te
-                            zorgen voor optimale gezondheid.
+                            Wist je dat onze voeding steeds meer bewerkt is en
+                            onze landbouwgrond verarmd is door uitputting?
+                            Hierdoor bevat onze voeding steeds minder vitaminen
+                            en mineralen. Een multivitamine helpt om tekorten
+                            waar nodig aan te vullen.
                         </p>
-                    </div>
+                    </fieldset>
                 </fieldset>
 
-
-                
-                
-                <fieldset>
+                <fieldset class="step-lifestyle">
                     <legend>Leefstijl</legend>
-                    <fieldset>
+                    <fieldset class="step-item">
                         <label for="sport-range"
                             >Hoe vaak sport je in de week?</label
                         >
+
                         <div class="range-container">
                             <span class="range-label min-label">0</span>
 
-                            <input
-                                type="range"
-                                id="sport-range"
-                                name="sport-range"
-                                min="0"
-                                max="7"
-                                value="1"
-                            />
+                            <div class="range-in-out">
+                                <input
+                                    type="range"
+                                    id="sport-range"
+                                    name="sport-range"
+                                    min="0"
+                                    max="7"
+                                />
+
+                                <output for="sport-range">Schuif</output>
+                            </div>
+
                             <span class="range-label max-label">7</span>
                         </div>
 
                         <fieldset>
                             <legend>Welke sport beoefen je?</legend>
-                            <input
-                                type="radio"
-                                id="kracht"
-                                name="sport"
-                                value="kracht"
-                                checked
-                            />
-                            <label for="kracht">Kracht</label>
-                            <input
-                                type="radio"
-                                id="duursport"
-                                name="sport"
-                                value="duursport"
-                            />
-                            <label for="duursport">Duursport</label>
-                            <input
-                                type="radio"
-                                id="laag-intensief"
-                                name="sport"
-                                value="laag-intensief"
-                            />
-                            <label for="laag-intensief">Laag intensief</label>
+
+                            <div class="input-wrapper">
+                                <input
+                                    type="radio"
+                                    id="kracht"
+                                    name="sport"
+                                    value="kracht"
+                                />
+                                <label for="kracht">
+                                    <img
+                                        src="placeholder.svg"
+                                        alt=""
+                                    />Kracht</label
+                                >
+                                <input
+                                    type="radio"
+                                    id="duursport"
+                                    name="sport"
+                                    value="duursport"
+                                />
+                                <label for="duursport">
+                                    <img
+                                        src="placeholder.svg"
+                                        alt=""
+                                    />Duursport</label
+                                >
+                                <input
+                                    type="radio"
+                                    id="laag-intensief"
+                                    name="sport"
+                                    value="laag-intensief"
+                                />
+                                <label for="laag-intensief">
+                                    <img src="placeholder.svg" alt="" />
+                                    Laag intensief
+                                </label>
+                            </div>
                         </fieldset>
 
                         <label for="zon"
                             >Hoeveel uur per dag kom je buiten?</label
                         >
+
                         <div class="range-container">
                             <span class="range-label min-label">0</span>
 
-                            <input
-                                type="range"
-                                id="zon"
-                                name="zon"
-                                min="0"
-                                max="4"
-                                value="1"
-                            />
-                            <span class="range-label max-label">7</span>
+                            <div class="range-in-out">
+                                <input
+                                    type="range"
+                                    id="zon"
+                                    name="zon"
+                                    min="0"
+                                    max="8"
+                                />
+
+                                <output for="zon">Schuif</output>
+                            </div>
+
+                            <span class="range-label max-label">8</span>
                         </div>
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="step-item">
                         <label for="slaap">Hoeveel uur slaap je per dag?</label>
 
                         <div class="range-container">
                             <span class="range-label min-label">0</span>
 
-                            <input
-                                type="range"
-                                id="slaap"
-                                name="slaap"
-                                min="0"
-                                max="12"
-                                value="1"
-                            />
-                            <span class="range-label max-label">12</span>
+                            <div class="range-in-out">
+                                <input
+                                    type="range"
+                                    id="slaap"
+                                    name="slaap"
+                                    min="0"
+                                    max="12"
+                                />
+
+                                <output for="slaap">Schuif</output>
+                            </div>
+
+                            <span class="range-label max-label">8</span>
                         </div>
 
                         <fieldset>
                             <legend>Ervaar je stress?</legend>
-                            <input
-                                type="radio"
-                                id="ja-stress"
-                                name="stress"
-                                value="ja-stress"
-                                checked
-                            />
-                            <label for="ja-stress">Ja</label>
-                            <input
-                                type="radio"
-                                id="nee-stress"
-                                name="stress"
-                                value="nee-stress"
-                            />
-                            <label for="nee-stress">Nee</label>
+
+                            <div class="input-wrapper small-input">
+                                <input
+                                    type="radio"
+                                    id="ja-stress"
+                                    name="stress"
+                                    value="ja-stress"
+                                />
+                                <label for="ja-stress">Ja</label>
+                                <input
+                                    type="radio"
+                                    id="nee-stress"
+                                    name="stress"
+                                    value="nee-stress"
+                                />
+                                <label for="nee-stress">Nee</label>
+                            </div>
                         </fieldset>
                         <label for="energiek"
                             >Hoe vaak voel jij je energiek op een dag?</label
@@ -415,71 +465,80 @@
 
                         <select name="energiek" id="energiek">
                             <option value="">Kies</option>
-                            <option selected value="nooit">Nooit</option>
+                            <option value="nooit">Nooit</option>
                             <option value="soms">Soms</option>
                             <option value="regelmatig">Regelmatig</option>
                             <option value="vaak">Vaak</option>
                         </select>
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="step-item">
                         <fieldset>
                             <legend>Rook je?</legend>
-                            <input
-                                type="radio"
-                                id="ja-roken"
-                                name="roken"
-                                value="ja-roken"
-                                checked
-                            />
-                            <label for="ja-roken">Ja</label>
-                            <input 
-                                type="radio"
-                                id="nee-roken"
-                                name="roken"
-                                value="nee-roken"
-                            />
-                            <label for="nee-roken">Nee</label>
+
+                            <div class="input-wrapper small-input">
+                                <input
+                                    type="radio"
+                                    id="ja-roken"
+                                    name="roken"
+                                    value="ja-roken"
+                                />
+                                <label for="ja-roken">Ja</label>
+                                <input
+                                    type="radio"
+                                    id="nee-roken"
+                                    name="roken"
+                                    value="nee-roken"
+                                />
+                                <label for="nee-roken">Nee</label>
+                            </div>
                         </fieldset>
 
                         <label for="alcohol"
                             >Hoeveel glazen alcohol drink je per week?</label
                         >
+
                         <div class="range-container">
                             <span class="range-label min-label">0</span>
 
-                            <input
-                                type="range"
-                                id="alcohol"
-                                name="alcohol"
-                                min="0"
-                                max="15"
-                                value="1"
-                            />
+                            <div class="range-in-out">
+                                <input
+                                    type="range"
+                                    id="alcohol"
+                                    name="alcohol"
+                                    min="0"
+                                    max="15"
+                                />
+
+                                <output for="alcohol">Schuif</output>
+                            </div>
+
                             <span class="range-label max-label">15</span>
                         </div>
 
                         <fieldset>
                             <legend>Gebruik je wel eens drugs?</legend>
-                            <input
-                                type="radio"
-                                id="ja-drugs"
-                                name="drugs"
-                                value="ja-drugs"
-                                checked
-                            />
-                            <label for="ja-drugs">Ja</label>
-                            <input
-                                type="radio"
-                                id="nee-drugs"
-                                name="drugs"
-                                value="nee-drugs"
-                            />
-                            <label for="nee-drugs">Nee</label>
+
+                            <div class="input-wrapper small-input">
+                                <input
+                                    type="radio"
+                                    id="ja-drugs"
+                                    name="drugs"
+                                    value="ja-drugs"
+                                />
+                                <label for="ja-drugs">Ja</label>
+                                <input
+                                    type="radio"
+                                    id="nee-drugs"
+                                    name="drugs"
+                                    value="nee-drugs"
+                                />
+                                <label for="nee-drugs">Nee</label>
+                            </div>
                         </fieldset>
                     </fieldset>
 
-                    <div>
+                    <fieldset class="step-item">
                         <h2>In balans: Lichaam en geest</h2>
                         <p>
                             Je leefstijl, inclusief activiteitsniveau, mentale
@@ -490,30 +549,43 @@
                         </p>
 
                         <div id="leefstijl-resultaat"></div>
-                    </div>
+                    </fieldset>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="step-support">
                     <legend>Ondersteuning</legend>
 
-                    <fieldset>
-                        <fieldset>
+                    <fieldset class="step-item">
+                        <fieldset class="input-option">
                             <legend>Gebruik je medicijnen?</legend>
-                            <input
-                                type="radio"
-                                id="ja-medicijnen"
-                                name="medicijnen"
-                                value="ja-medicijnen"
-                                checked
-                            />
-                            <label for="ja-medicijnen">Ja</label>
-                            <input
-                                type="radio"
-                                id="nee-medicijnen"
-                                name="medicijnen"
-                                value="nee-medicijnen"
-                            />
-                            <label for="nee-medicijnen">Nee</label>
+
+                            <div class="input-wrapper small-input">
+                                <input
+                                    type="radio"
+                                    id="nee-medicijnen"
+                                    name="medicijnen"
+                                    value="nee-medicijnen"
+                                    checked
+                                />
+                                <label for="nee-medicijnen">Nee</label>
+
+                                <input
+                                    type="radio"
+                                    id="ja-medicijnen"
+                                    name="medicijnen"
+                                    value="ja-medicijnen"
+                                />
+                                <label for="ja-medicijnen">Ja</label>
+                            </div>
+                            <label for="medicijnen-info">Namelijk:</label>
+
+                            <textarea
+                                type="text"
+                                id="medicijnen-info"
+                                name="medicijnen-info"
+                                rows="4"
+                                cols="50"
+                            ></textarea>
                         </fieldset>
                         <fieldset>
                             <legend>
@@ -524,7 +596,6 @@
                                 id="ja-antibiotica"
                                 name="antibiotica"
                                 value="ja-antibiotica"
-                                checked
                             />
                             <label for="ja-antibiotica">Ja</label>
                             <input
@@ -532,6 +603,7 @@
                                 id="nee-antibiotica"
                                 name="antibiotica"
                                 value="nee-antibiotica"
+                                checked
                             />
                             <label for="nee-antibiotica">Nee</label>
                         </fieldset>
@@ -539,22 +611,32 @@
                             <legend>Gebruik je suppletie?</legend>
                             <input
                                 type="radio"
-                                id="ja-suppletie"
-                                name="suppletie"
-                                value="ja-suppletie"
-                                checked
-                            />
-                            <label for="ja-suppletie">Ja</label>
-                            <input
-                                type="radio"
                                 id="nee-suppletie"
                                 name="suppletie"
                                 value="nee-suppletie"
+                                checked
                             />
                             <label for="nee-suppletie">Nee</label>
+
+                            <input
+                                type="radio"
+                                id="ja-suppletie"
+                                name="suppletie"
+                                value="ja-suppletie"
+                            />
+                            <label for="ja-suppletie">Ja</label>
+                            <label for="suppletie-info">Namelijk:</label>
+
+                            <textarea
+                                type="text"
+                                id="suppletie-info"
+                                name="suppletie-info"
+                                rows="4"
+                                cols="50"
+                            ></textarea>
                         </fieldset>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="step-item">
                         <legend>
                             Op welke gebieden voel je dat je extra ondersteuning
                             nodig hebt?
@@ -564,7 +646,6 @@
                             id="cholesterol"
                             name="ondersteuning"
                             value="cholesterol"
-                            checked
                         />
                         <label for="cholesterol">Cholesterol</label>
                         <input
@@ -586,12 +667,11 @@
                             id="gewrichten"
                             name="ondersteuning"
                             value="gewrichten"
-                            checked
                         />
                         <label for="gewrichten">Gewrichten</label>
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="step-item">
                         <legend>
                             Op welke gebieden voel je dat je extra ondersteuning
                             nodig hebt?
@@ -608,7 +688,6 @@
                             id="overgang"
                             name="ondersteuning"
                             value="overgang"
-                            checked
                         />
                         <label for="overgang">Overgang</label>
                         <input
@@ -623,7 +702,6 @@
                             id="nhh"
                             name="ondersteuning"
                             value="nhh"
-                            checked
                         />
                         <label for="nhh">Nagel, huid en haar</label>
                         <input
@@ -638,7 +716,7 @@
                     </fieldset>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="step-final">
                     <legend>Resultaten</legend>
                     <h2>Ontvang uw persoonlijk supplementenadvies</h2>
                     <p>
@@ -687,7 +765,10 @@
                     </label>
                 </fieldset>
 
-                <button>Verzenden</button>
+                <footer>
+                    <button class="prev-button">Vorige</button>
+                    <button class="next-button">Volgende</button>
+                </footer>
             </form>
             <section class="tba-results">
                 <h2>Resultaten</h2>
@@ -699,10 +780,8 @@
                 </p>
 
                 <div class="results"></div>
-
-              
             </section>
-        </section>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>

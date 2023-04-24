@@ -1,4 +1,4 @@
-/* :root {
+:root {
     --blue: #051528;
     --white: #ffffff;
     --green: #55daba;
@@ -8,12 +8,13 @@
     --sanSerif: 'Typold', Sans-serif;
 }
 
-body {
-}
-
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+
+.tba-quiz * {
     box-sizing: border-box;
 }
 
@@ -21,10 +22,22 @@ body {
     position: relative;
     padding: 0px 20px 20px 20px;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+}
+
+.tba-quiz::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background-color: var(--green);
 }
 
 .tba-quiz h1 {
@@ -37,27 +50,77 @@ body {
     margin-bottom: 50px;
 }
 
-.tba-quiz form fieldset > legend {
+.tba-quiz h2 {
     font-family: var(--serif);
-    font-size: 32px;
-    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 20px;
 }
 
 .tba-quiz p {
     font-family: var(--sanSerif);
     font-size: 16px;
     max-width: 650px;
+    margin-bottom: 20px;
 }
 
-.tba-quiz::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 160px;
+.tba-quiz button {
+    all: unset;
     background-color: var(--green);
+    padding: 16px 25px;
+    width: fit-content;
+    font-family: var(--sanSerif);
+    cursor: pointer;
+}
+
+.tba-quiz form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.tba-quiz footer {
+    align-self: flex-end;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tba-quiz fieldset {
+    all: unset;
+}
+
+.tba-quiz legend {
+    all: unset;
+}
+
+.tba-quiz small {
+    font-family: 'Typold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    margin-bottom: 20px;
+}
+
+.tba-quiz form > fieldset {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.tba-quiz form > fieldset > legend {
+    font-family: var(--serif);
+    font-size: 32px;
+    margin-bottom: 100px;
 }
 
 .tba-quiz nav {
@@ -159,7 +222,7 @@ nav.start-quiz ul button span {
 }
 
 .tba-introduction {
-    display: none;
+    display: flex;
     flex-grow: 1;
     flex-direction: column;
 }
@@ -168,40 +231,170 @@ nav.start-quiz ul button span {
     flex-grow: 1;
 }
 
-#tba-start-quiz {
+.tba-quiz .step-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.tba-quiz label,
+.step-item legend {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 10px;
+}
+
+.tba-quiz input:not(input[type='range']),
+select {
     all: unset;
-    height: 56px;
-    background-color: var(--green);
-    padding: 0px 25px;
-    display: grid;
-    align-content: center;
-    width: fit-content;
-    font-family: var(--sanSerif);
-    align-self: flex-end;
-    justify-self: flex-end;
+    padding: 10px;
+    font-family: 'Typold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    background-color: #f5f5f1;
+    border-bottom: 2px solid var(--green);
+    margin-bottom: 20px;
+}
+
+.bmi-calc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--offwhite);
+    margin-bottom: 20px;
+}
+
+#bmi-nummer {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 54px;
+    line-height: 100%;
+    margin-bottom: 0px;
+}
+
+.bmi-calc #wijzer {
+    width: 50px;
+    position: absolute;
+    left: calc(50% - 50px);
+    bottom: 170px;
+    transform-origin: 100% 50%;
+    transform: rotate(80deg);
+}
+
+.input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.input-wrapper input:checked + label {
+    background-color: var(--gold);
+    border: 2px solid var(--green);
+}
+
+.input-wrapper input {
+    display: none !important;
+}
+
+.input-wrapper label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 150px;
+    aspect-ratio: 1/1;
+    font-family: 'Typold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    background-color: var(--offwhite);
+    border-bottom: 2px solid var(--green);
     cursor: pointer;
 }
 
-form > fieldset {
-    display: none;
+.input-wrapper.small-input label {
+    aspect-ratio: unset;
+    padding: 10px;
 }
 
-form > fieldset:nth-of-type(1) {
-    display: block;
-}
-
-form > fieldset > * {
-    display: none;
-}
-
-form > fieldset > *:nth-of-type(1) {
-    display: block;
-}
-
-.tba-results {
-    display: none;
-}
-
-.elementor-nav-menu--dropdown.elementor-nav-menu__container ul > li > a {
+.range-container {
+    position: relative;
     display: flex;
-} */
+    gap: 20px;
+}
+
+input[type='range'] {
+    position: relative;
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type='range']::before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: var(--green);
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-image: url('placeholder.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.range-in-out {
+    position: relative;
+    width: 100%;
+    margin-bottom: 60px;
+}
+.range-container output {
+    position: absolute;
+    left: 0px;
+    bottom: -35px;
+    padding: 0.5em;
+    background: var(--blue);
+    color: var(--white);
+}
+
+.range-label {
+    font-family: 'Typold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+}
+
+#voeding-resultaat {
+    background-color: var(--offwhite);
+    padding: 30px;
+    display: flex;
+    font-family: 'Cormorant';
+    font-size: 18px;
+    line-height: 120%;
+    text-align: center;
+}
+
+.input-option {
+    display: flex;
+}
