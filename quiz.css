@@ -124,14 +124,16 @@
 }
 
 .tba-quiz nav {
+    z-index: 99;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 100%;
-    max-width: 650px;
+    max-width: 840px;
 }
 
 .tba-quiz nav ul {
+    padding: 20px;
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -150,29 +152,23 @@
     align-items: center;
     height: 45px;
     position: relative;
-    padding: 0 10px;
 }
 
 .tba-quiz nav ul button span {
     mix-blend-mode: difference;
     z-index: 1;
     color: var(--offwhite);
+    display: none;
+}
+
+.nav-intro nav ul button span {
+    display: block !important;
 }
 
 .tba-quiz nav ul button img {
     mix-blend-mode: difference;
     z-index: 1;
-}
-
-.tba-quiz nav ul button .progress {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: var(--blue);
-    transition: width 2s ease-in;
+    padding: 10px;
 }
 
 .tba-quiz nav ul button:hover .progress {
@@ -195,15 +191,23 @@ nav.start-quiz ul li {
 nav.start-quiz ul button {
     justify-content: center;
     align-items: center;
-    padding: 0;
+}
+
+.nav-intro ul button {
+    justify-content: space-between !important;
 }
 
 nav.start-quiz ul .tba-active {
     flex-grow: 1;
 }
 
-nav.start-quiz ul button span {
+nav.nav-intro ul button span {
     display: none;
+    padding: 10px;
+}
+
+.nav-intro ul button span {
+    display: block !important;
 }
 
 .tba-quiz nav ul button .progress {
@@ -214,11 +218,26 @@ nav.start-quiz ul button span {
     width: 0%;
     height: 100%;
     background-color: var(--blue);
-    transition: width 2s ease-in;
+    transition: width 0.4s ease-in;
 }
 
 .tba-quiz nav ul button:hover .progress {
     width: 100%;
+}
+
+.nav-intro {
+    display: flex;
+    flex-direction: column;
+    top: 50% !important;
+}
+
+.nav-intro ul {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.nav-intro ul li {
+    width: 100% !important;
 }
 
 .tba-introduction {

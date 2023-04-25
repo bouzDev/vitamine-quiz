@@ -114,30 +114,45 @@ document.querySelector('form').addEventListener('submit', function (event) {
     let sportType;
 
     if (sportRange != 0) {
-        sportType = document.querySelector('input[name="sport"]:checked').value;
+        const checkedSportInput = document.querySelector(
+            'input[name="sport"]:checked'
+        );
+        sportType = checkedSportInput ? checkedSportInput.value : null;
     }
 
     let sun = parseInt(document.getElementById('zon').value);
     let sleep = parseInt(document.getElementById('slaap').value);
-    let stress = document.querySelector('input[name="stress"]:checked').value;
+    let stressRadio = document.querySelector('input[name="stress"]:checked');
+    let stress = stressRadio ? stressRadio.value : null;
 
     let energy = document.getElementById('energiek').value;
-    let smoke = document.querySelector('input[name="roken"]:checked').value;
-    let alchohol = parseInt(document.getElementById('alcohol').value);
-    let drugs = document.querySelector('input[name="drugs"]:checked').value;
-    let medicine = document.querySelector(
+    let smokeRadio = document.querySelector('input[name="roken"]:checked');
+    let smoke = smokeRadio ? smokeRadio.value : null;
+
+    let drugsRadio = document.querySelector('input[name="drugs"]:checked');
+    let drugs = drugsRadio ? drugsRadio.value : null;
+
+    let medicineRadio = document.querySelector(
         'input[name="medicijnen"]:checked'
-    ).value;
-    let antibiotics = document.querySelector(
+    );
+    let medicine = medicineRadio ? medicineRadio.value : null;
+
+    let antibioticsRadio = document.querySelector(
         'input[name="antibiotica"]:checked'
-    ).value;
-    let supplements = document.querySelector(
+    );
+    let antibiotics = antibioticsRadio ? antibioticsRadio.value : null;
+
+    let supplementsRadio = document.querySelector(
         'input[name="suppletie"]:checked'
-    ).value;
+    );
+    let supplements = supplementsRadio ? supplementsRadio.value : null;
+
     let extra = Array.from(
         document.querySelectorAll('input[name="ondersteuning"]:checked'),
         (input) => input.value
     );
+
+    let alchohol = parseInt(document.getElementById('alcohol').value);
 
     let bmi = calculateBMI(length, weight);
 
@@ -336,12 +351,13 @@ let stepSupport = document.querySelector('.step-support');
 let stepFinal = document.querySelector('.step-final');
 let results = document.querySelector('.tba-results');
 
-console.log(stepProfile);
-
 let stepProfileItems = [...stepProfile.querySelectorAll('.step-item')];
 let stepFoodItems = [...stepFood.querySelectorAll('.step-item')];
 let stepLifestyleItems = [...stepLifestyle.querySelectorAll('.step-item')];
 let stepSupportItems = [...stepSupport.querySelectorAll('.step-item')];
+
+let navigation = document.querySelector('.start-quiz');
+let navItems = [...navigation.querySelectorAll('li')];
 
 let allSteps = [
     { step: intro, item: [] },
@@ -371,14 +387,25 @@ function handleNext() {
         item++;
     }
 
-    console.log(allSteps[step].item.length);
+    if (step !== 0) {
+        navigation.classList.remove('nav-intro');
+    }
+
+    navItems.forEach((link, index) => {
+        let progress = link.querySelector('.progress');
+
+        let widthLine = (100 / allSteps[step].item.length) * item;
+        console.log(widthLine);
+        // progress.style.width =
+
+        if (index == step) {
+            link.classList.add('tba-active');
+        }
+    });
 
     allNone();
     allSteps[step].step.style.display = 'flex';
     allSteps[step].item[item].style.display = 'flex';
-
-    console.log(step);
-    console.log(allSteps[step].item.length);
 }
 
 function handlePrev() {
@@ -387,6 +414,10 @@ function handlePrev() {
         step--;
     } else {
         item--;
+    }
+
+    if (step == 0) {
+        navigation.classList.add('nav-intro');
     }
 
     allNone();
