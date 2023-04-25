@@ -1,100 +1,91 @@
 let product = [
-    { product: 'PMC', reason: [], value: 10 },
-    { product: 'HS', reason: [], value: 1 },
-    { product: 'CHOL', reason: [], value: 1 },
-    { product: 'AAOX', reason: [], value: 1 },
-    { product: 'OM3', reason: [], value: 1 },
-    { product: 'VEG OM3', reason: [], value: 1 },
-    { product: 'IJzer', reason: [], value: 1 },
-    { product: 'B12', reason: [], value: 5 },
-    { product: 'MAG', reason: [], value: 1 },
-    { product: 'CBD', reason: [], value: 1 },
-    { product: 'BUF C', reason: [], value: 1 },
-    { product: 'LS', reason: [], value: 1 },
-    { product: 'D75', reason: [], value: 1 },
-    { product: 'D25', reason: [], value: 1 },
-    { product: 'K2', reason: [], value: 1 },
-    { product: 'BS', reason: [], value: 1 },
-    { product: 'HPS', reason: [], value: 10 },
-    { product: 'JS', reason: [], value: 1 },
-    { product: 'FIBER', reason: [], value: 1 },
-    { product: 'MENO', reason: [], value: 1 },
-    { product: 'BRAIN', reason: [], value: 1 },
-    { product: 'US', reason: [], value: 1 },
-    { product: 'IFC', reason: [], value: 1 },
-    { product: 'SR', reason: [], value: 1 },
-    { product: 'PS', reason: [], value: 1 },
-    { product: 'BC', reason: [], value: 1 },
+    { full: 'Premium Multi Complex', product: 'PMC', reason: [], value: 10 },
+    { full: 'Heart Support', product: 'HS', reason: [], value: 1 },
+    { full: 'Cholesterol Support', product: 'CHOL', reason: [], value: 1 },
+    {
+        full: 'Advanced Antioxidant Complex',
+        product: 'AAOX',
+        reason: [],
+        value: 1,
+    },
+    { full: 'Alaska Omega 3 Forte', product: 'OM3', reason: [], value: 1 },
+    { full: 'Vegan Omega 3', product: 'VEG OM3', reason: [], value: 1 },
+    { full: 'Iron Complex', product: 'IJzer', reason: [], value: 1 },
+    { full: 'Active B12 Forte', product: 'B12', reason: [], value: 5 },
+    { full: 'Triple Magnesium', product: 'MAG', reason: [], value: 1 },
+    { full: 'CBD Oil', product: 'CBD', reason: [], value: 1 },
+    { full: 'Buffered Vitamin C', product: 'BUF C', reason: [], value: 1 },
+    { full: 'Liver Support', product: 'LS', reason: [], value: 1 },
+    { full: 'Vitamin D3 Forte 75 mcg', product: 'D75', reason: [], value: 1 },
+    { full: 'Vitamin D3 25 mcg', product: 'D25', reason: [], value: 1 },
+    { full: 'Natural Vitamin K2', product: 'K2', reason: [], value: 1 },
+    { full: 'Bone Support', product: 'BS', reason: [], value: 1 },
+    { full: 'Human Probiotic', product: 'HPS', reason: [], value: 10 },
+    { full: 'Joint Support', product: 'JS', reason: [], value: 1 },
+    { full: 'Fiber Complex', product: 'FIBER', reason: [], value: 1 },
+    {
+        full: 'Menopause/Menstruatie Support',
+        product: 'MENO',
+        reason: [],
+        value: 1,
+    },
+    { full: 'Brain Support', product: 'BRAIN', reason: [], value: 1 },
+    { full: 'Urinary Support', product: 'US', reason: [], value: 1 },
+    { full: 'Immune Forte Complex', product: 'IFC', reason: [], value: 1 },
+    { full: 'Stress relief', product: 'SR', reason: [], value: 1 },
+    { full: 'Prostate Support', product: 'PS', reason: [], value: 1 },
+    { full: 'Bone Support', product: 'BC', reason: [], value: 1 },
 ];
 
-function calculateBMI(length, weight) {
-    let heightInMeters = length / 100;
-    let bmi = weight / (heightInMeters * heightInMeters);
+let form = document.querySelector('.tba-quiz form');
+let intro = document.querySelector('.tba-introduction');
+let stepProfile = document.querySelector('.step-profile');
+let stepFood = document.querySelector('.step-food');
+let stepLifestyle = document.querySelector('.step-lifestyle');
+let stepSupport = document.querySelector('.step-support');
+let stepFinal = document.querySelector('.step-final');
+let results = document.querySelector('.tba-results');
+let footer = document.querySelector('.tba-quiz footer');
+let sendData = document.querySelector('.tba-quiz .send-data');
 
-    return bmi;
-}
+let stepProfileItems = [...stepProfile.querySelectorAll('.step-item')];
+let stepFoodItems = [...stepFood.querySelectorAll('.step-item')];
+let stepLifestyleItems = [...stepLifestyle.querySelectorAll('.step-item')];
+let stepSupportItems = [...stepSupport.querySelectorAll('.step-item')];
 
-function calculateAge(birthDateString) {
-    let dob = new Date(birthDateString);
-    let month_diff = Date.now() - dob.getTime();
-    let age_dt = new Date(month_diff);
-    let year = age_dt.getUTCFullYear();
-    let age = Math.abs(year - 1970);
+let navigation = document.querySelector('.start-quiz');
+let navItems = [...navigation.querySelectorAll('li')];
 
-    return age;
-}
+let rangeContainer = [...document.querySelectorAll('.range-container')];
 
-function addReason(productCode, reason) {
-    const list = product.find((item) => item.product === productCode);
-    if (list) {
-        list.reason.push(reason);
-    }
-}
+let allSteps = [
+    { step: intro, item: [] },
+    { step: stepProfile, item: stepProfileItems },
+    { step: stepFood, item: stepFoodItems },
+    { step: stepLifestyle, item: stepLifestyleItems },
+    { step: stepSupport, item: stepSupportItems },
+    { step: stepFinal, item: [] },
+    { step: results, item: [] },
+];
 
-function clearReasons(productArray) {
-    productArray.forEach((item) => {
-        item.reason = [];
-    });
-}
+let next = document.querySelector('.next-button');
+let prev = document.querySelector('.prev-button');
 
-function sortProductsByValue(products) {
-    return products.sort((a, b) => b.value - a.value);
-}
-
-function displayProductsWithReasons(productArray) {
-    let resultsDiv = document.querySelector('.results');
-    resultsDiv.innerHTML = '';
-    let counter = 0;
-
-    productArray.forEach((item) => {
-        if (item.reason.length > 0 && counter < 6) {
-            // Show only 6 products
-            // counter++;
-            let productTitle = document.createElement('h3');
-            productTitle.textContent = item.product;
-            resultsDiv.appendChild(productTitle);
-
-            let ul = document.createElement('ul');
-            item.reason.forEach((reason) => {
-                let li = document.createElement('li');
-                li.textContent = reason;
-                ul.appendChild(li);
-            });
-            resultsDiv.appendChild(ul);
-        }
-    });
-}
-
-document.querySelector('form').addEventListener('submit', function (event) {
+form.addEventListener('submit', function (event) {
     event.preventDefault();
     clearReasons(product);
+
     let birthDateString = document.getElementById('leeftijd').value;
+
+    //add this to list
     let name = document.getElementById('naam').value;
-
+    //add this to list
     let age = calculateAge(birthDateString);
-
+    //add this to list
     let sex = document.getElementById('geslacht').value;
+    //add this to list
     let length = parseFloat(document.getElementById('lengte').value);
+    //add this to list
     let weight = parseFloat(document.getElementById('gewicht').value);
     let skinType = document.getElementById('huidtype').value;
     let diet;
@@ -299,90 +290,93 @@ document.querySelector('form').addEventListener('submit', function (event) {
         addReason('HPS', 'DSS');
     }
 
-    console.log(name);
-    console.log(bmi);
-    console.log(age);
-    console.log(sex);
-    console.log(length);
-    console.log(weight);
-    console.log(skinType);
-    console.log(diet);
-    console.log(meat);
-    console.log(fish);
-    console.log(vegetable);
-    console.log(processed);
-    console.log(sportRange);
-    console.log(sportType);
-    console.log(sun);
-    console.log(sleep);
-    console.log(stress);
-    console.log(energy);
-    console.log(smoke);
-    console.log(alchohol);
-    console.log(drugs);
-    console.log(medicine);
-    console.log(antibiotics);
-    console.log(supplements);
-    console.log(extra);
-
     let sorted = sortProductsByValue(product);
 
     displayProductsWithReasons(sorted);
 });
 
-// let subjects = [...document.querySelectorAll('.tba-quiz form > fieldset')];
+next.addEventListener('click', handleNext);
+prev.addEventListener('click', handlePrev);
+sendData.addEventListener('click', handleSend);
 
-// for (let i = 0; i < subjects.length; i++) {
-//     let groups = subjects[i].children;
-//     let fieldsetChildren = [];
+function calculateBMI(length, weight) {
+    let heightInMeters = length / 100;
+    let bmi = weight / (heightInMeters * heightInMeters);
 
-//     for (let j = 0; j < groups.length; j++) {
-//         if (groups[j].tagName.toLowerCase() === 'fieldset') {
-//             fieldsetChildren.push(groups[j]);
-//         }
-//     }
-// }
+    return bmi;
+}
 
-let intro = document.querySelector('.tba-introduction');
-let stepProfile = document.querySelector('.step-profile');
-let stepFood = document.querySelector('.step-food');
-let stepLifestyle = document.querySelector('.step-lifestyle');
-let stepSupport = document.querySelector('.step-support');
-let stepFinal = document.querySelector('.step-final');
-let results = document.querySelector('.tba-results');
+function calculateAge(birthDateString) {
+    let dob = new Date(birthDateString);
+    let month_diff = Date.now() - dob.getTime();
+    let age_dt = new Date(month_diff);
+    let year = age_dt.getUTCFullYear();
+    let age = Math.abs(year - 1970);
 
-let stepProfileItems = [...stepProfile.querySelectorAll('.step-item')];
-let stepFoodItems = [...stepFood.querySelectorAll('.step-item')];
-let stepLifestyleItems = [...stepLifestyle.querySelectorAll('.step-item')];
-let stepSupportItems = [...stepSupport.querySelectorAll('.step-item')];
+    return age;
+}
 
-let navigation = document.querySelector('.start-quiz');
-let navItems = [...navigation.querySelectorAll('li')];
+function addReason(productCode, reason) {
+    const list = product.find((item) => item.product === productCode);
+    if (list) {
+        list.reason.push(reason);
+    }
+}
 
-let allSteps = [
-    { step: intro, item: [] },
-    { step: stepProfile, item: stepProfileItems },
-    { step: stepFood, item: stepFoodItems },
-    { step: stepLifestyle, item: stepLifestyleItems },
-    { step: stepSupport, item: stepSupportItems },
-    { step: stepFinal, item: [] },
-    { step: results, item: [] },
-];
+function clearReasons(productArray) {
+    productArray.forEach((item) => {
+        item.reason = [];
+    });
+}
 
-let next = document.querySelector('.next-button');
-let prev = document.querySelector('.prev-button');
+function sortProductsByValue(products) {
+    return products.sort((a, b) => b.value - a.value);
+}
+
+function displayProductsWithReasons(productArray) {
+    let resultsDiv = document.querySelector('.results');
+    resultsDiv.innerHTML = '';
+    let counter = 0;
+
+    productArray.forEach((item) => {
+        if (item.reason.length > 0 && counter < 6) {
+            // Show only 6 products
+            // counter++;
+            let productTitle = document.createElement('h3');
+            productTitle.textContent = item.full;
+            resultsDiv.appendChild(productTitle);
+
+            let ul = document.createElement('ul');
+            item.reason.forEach((reason) => {
+                let li = document.createElement('li');
+                li.textContent = reason;
+                ul.appendChild(li);
+            });
+            resultsDiv.appendChild(ul);
+        }
+    });
+}
+
+function handleSend() {
+    allNone();
+    results.style.display = 'flex';
+    form.style.display = 'none';
+}
 
 let step = 0;
 let item = 0;
 let start = false;
 
-next.addEventListener('click', handleNext);
-prev.addEventListener('click', handlePrev);
-
 function handleNext() {
-    if (item === allSteps[step].item.length) {
-        item = 0;
+    if (!isFormValid(step)) {
+        alert('Vul alle verplichte velden in voordat u verdergaat.');
+        return;
+    }
+
+    if (item >= allSteps[step].item.length - 1) {
+        // Changed this line
         step++;
+        item = 0;
     } else {
         item++;
     }
@@ -391,43 +385,47 @@ function handleNext() {
         navigation.classList.remove('nav-intro');
     }
 
-    navItems.forEach((link, index) => {
-        let progress = link.querySelector('.progress');
-
-        let widthLine = (100 / allSteps[step].item.length) * item;
-        console.log(widthLine);
-        // progress.style.width =
-
-        if (index == step) {
-            link.classList.add('tba-active');
-        }
-    });
+    if (step == allSteps.length - 2) {
+        footer.style.display = 'none';
+    }
 
     allNone();
+
     allSteps[step].step.style.display = 'flex';
-    allSteps[step].item[item].style.display = 'flex';
+    if (allSteps[step].item[item]) {
+        // Added this line to check if item exists
+        allSteps[step].item[item].style.display = 'flex';
+    }
+    updateNavItems();
 }
 
 function handlePrev() {
-    if (item == 0) {
-        item = allSteps[step - 1].item.length;
+    if (step === 0 && item === 0) {
+        return; // Do nothing if already at the beginning
+    }
+
+    if (item === 0) {
         step--;
+        item = allSteps[step].item.length - 1;
     } else {
         item--;
     }
 
-    if (step == 0) {
+    if (step === 0) {
         navigation.classList.add('nav-intro');
     }
 
     allNone();
     allSteps[step].step.style.display = 'flex';
-    allSteps[step].item[item].style.display = 'flex';
+    if (allSteps[step].item[item]) {
+        allSteps[step].item[item].style.display = 'flex';
+    }
+
+    updateNavItems();
 }
 
 function allNone() {
     allSteps.forEach((element) => {
-        console.log(element);
         element.step.style.display = 'none';
 
         element.item.forEach((group) => {
@@ -438,8 +436,6 @@ function allNone() {
 
 allNone();
 allSteps[0].step.style.display = 'flex';
-
-let rangeContainer = [...document.querySelectorAll('.range-container')];
 
 rangeContainer.forEach((element) => {
     let input = element.querySelector('input');
@@ -458,15 +454,12 @@ rangeContainer.forEach((element) => {
         output.style.left = `calc(${percentage * 100}% - (${
             outputWidth / 2
         }px) + ${offset}px)`;
-
-        console.log('ofset' + offset);
     }
 
     input.addEventListener('input', (event) => {
         updateOutputPosition();
     });
 
-    // Initial positioning of output
     updateOutputPosition();
 
     output.textContent = 'SCHUIF';
@@ -474,4 +467,70 @@ rangeContainer.forEach((element) => {
 
 function lerp(start, end, percentage) {
     return start + (end - start) * percentage;
+}
+
+function updateNavItems() {
+    navItems.forEach((link, index) => {
+        let progress = link.querySelector('.progress');
+
+        // Alleen van toepassing op de gewenste stappen (index 0 t/m 3)
+        if (index >= 0 && index <= 3) {
+            // Bij stepProfile, voeg 'tba-active' toe aan de eerste li
+            if (step === 1 && index === 0) {
+                link.classList.add('tba-active');
+            } else if (index === step - 1) {
+                link.classList.add('tba-active');
+            } else {
+                link.classList.remove('tba-active');
+            }
+
+            // Update de voortgangsbalk
+            if (index < step - 1) {
+                progress.style.width = '100%';
+            } else if (index === step - 1) {
+                let widthLine = (100 / allSteps[step].item.length) * (item + 1);
+                progress.style.width = `${widthLine}%`;
+            } else {
+                progress.style.width = '0%';
+            }
+        }
+
+        // Voor stepFinal (index 5), voeg 'tba-active' toe aan alle li's
+        if (step === 5) {
+            navItems.forEach((link) => {
+                link.classList.add('tba-active');
+            });
+            // Voltooi de voortgangsbalk voor alle stappen behalve de laatste
+            if (index >= 0 && index <= 3) {
+                progress.style.width = '100%';
+            }
+        }
+    });
+}
+
+function isFormValid(step) {
+    const inputs = Array.from(
+        allSteps[step].step.querySelectorAll('input, select')
+    );
+
+    const requiredFields = inputs.filter((field) => {
+        if (field.type === 'radio') {
+            const radioGroup = document.getElementsByName(field.name);
+            const isChecked = Array.from(radioGroup).some(
+                (radio) => radio.checked
+            );
+            return field.required && !isChecked;
+        }
+
+        if (field.type === 'range') {
+            const output = field.nextElementSibling;
+            if (output.textContent.trim() === 'SCHUIF') {
+                return field.required && field.value === '';
+            }
+        }
+
+        return field.required && field.value.trim() === '';
+    });
+
+    return requiredFields.length === 0;
 }

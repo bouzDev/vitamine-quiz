@@ -94,7 +94,7 @@
 }
 
 .tba-quiz fieldset {
-    all: unset;
+    border: 0;
 }
 
 .tba-quiz legend {
@@ -133,7 +133,7 @@
 }
 
 .tba-quiz nav ul {
-    padding: 20px;
+    padding: 0 20px;
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -171,10 +171,6 @@
     padding: 10px;
 }
 
-.tba-quiz nav ul button:hover .progress {
-    width: 100%;
-}
-
 nav.start-quiz {
     top: 0;
     transform: translateY(20px);
@@ -186,6 +182,7 @@ nav.start-quiz ul {
 
 nav.start-quiz ul li {
     width: 45px;
+    transition: width 0.4s ease-in;
 }
 
 nav.start-quiz ul button {
@@ -198,7 +195,7 @@ nav.start-quiz ul button {
 }
 
 nav.start-quiz ul .tba-active {
-    flex-grow: 1;
+    width: 100%;
 }
 
 nav.nav-intro ul button span {
@@ -219,10 +216,6 @@ nav.nav-intro ul button span {
     height: 100%;
     background-color: var(--blue);
     transition: width 0.4s ease-in;
-}
-
-.tba-quiz nav ul button:hover .progress {
-    width: 100%;
 }
 
 .nav-intro {
@@ -339,6 +332,15 @@ select {
     background-color: var(--offwhite);
     border-bottom: 2px solid var(--green);
     cursor: pointer;
+    text-align: center;
+    padding: 10px;
+}
+
+.tba-quiz textarea {
+    background-color: var(--offwhite);
+    border: 0;
+    border-bottom: 2px solid var(--green);
+    margin-bottom: 20px;
 }
 
 .input-wrapper.small-input label {
@@ -416,4 +418,41 @@ input[type='range']::-webkit-slider-thumb {
 
 .input-option {
     display: flex;
+    flex-direction: column !important;
+}
+
+.check-wrapper {
+    display: flex;
+}
+
+.check-wrapper input {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--green) !important;
+    margin-right: 10px !important;
+}
+
+.check-wrapper input:checked {
+    background-color: var(--green) !important;
+}
+
+.check-wrapper label {
+    font-family: 'Typold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.tba-results {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+}
+
+.tba-results h2 {
+    font-family: var(--serif);
+    font-size: 32px;
+    margin-bottom: 100px;
 }

@@ -242,7 +242,7 @@
                                     max="7"
                                 />
 
-                                <output for="vlees">Schuif</output>
+                                <output for="vlees">SCHUIF</output>
                             </div>
 
                             <span class="range-label max-label">7</span>
@@ -565,7 +565,6 @@
                                     id="nee-medicijnen"
                                     name="medicijnen"
                                     value="nee-medicijnen"
-                                    checked
                                 />
                                 <label for="nee-medicijnen">Nee</label>
 
@@ -591,40 +590,44 @@
                             <legend>
                                 Heb je de afgelopen 2 jaar antibiotica gebruikt?
                             </legend>
-                            <input
-                                type="radio"
-                                id="ja-antibiotica"
-                                name="antibiotica"
-                                value="ja-antibiotica"
-                            />
-                            <label for="ja-antibiotica">Ja</label>
-                            <input
-                                type="radio"
-                                id="nee-antibiotica"
-                                name="antibiotica"
-                                value="nee-antibiotica"
-                                checked
-                            />
-                            <label for="nee-antibiotica">Nee</label>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Gebruik je suppletie?</legend>
-                            <input
-                                type="radio"
-                                id="nee-suppletie"
-                                name="suppletie"
-                                value="nee-suppletie"
-                                checked
-                            />
-                            <label for="nee-suppletie">Nee</label>
 
-                            <input
-                                type="radio"
-                                id="ja-suppletie"
-                                name="suppletie"
-                                value="ja-suppletie"
-                            />
-                            <label for="ja-suppletie">Ja</label>
+                            <div class="input-wrapper small-input">
+                                <input
+                                    type="radio"
+                                    id="ja-antibiotica"
+                                    name="antibiotica"
+                                    value="ja-antibiotica"
+                                />
+                                <label for="ja-antibiotica">Ja</label>
+                                <input
+                                    type="radio"
+                                    id="nee-antibiotica"
+                                    name="antibiotica"
+                                    value="nee-antibiotica"
+                                />
+                                <label for="nee-antibiotica">Nee</label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="input-option">
+                            <legend>Gebruik je suppletie?</legend>
+                            <div class="input-wrapper small-input">
+                                <input
+                                    type="radio"
+                                    id="nee-suppletie"
+                                    name="suppletie"
+                                    value="nee-suppletie"
+                                />
+                                <label for="nee-suppletie">Nee</label>
+
+                                <input
+                                    type="radio"
+                                    id="ja-suppletie"
+                                    name="suppletie"
+                                    value="ja-suppletie"
+                                />
+                                <label for="ja-suppletie">Ja</label>
+                            </div>
+
                             <label for="suppletie-info">Namelijk:</label>
 
                             <textarea
@@ -641,34 +644,55 @@
                             Op welke gebieden voel je dat je extra ondersteuning
                             nodig hebt?
                         </legend>
-                        <input
-                            type="checkbox"
-                            id="cholesterol"
-                            name="ondersteuning"
-                            value="cholesterol"
-                        />
-                        <label for="cholesterol">Cholesterol</label>
-                        <input
-                            type="checkbox"
-                            id="hart"
-                            name="ondersteuning"
-                            value="hart"
-                        />
-                        <label for="hart">Hart en bloedvaten</label>
-                        <input
-                            type="checkbox"
-                            id="botten"
-                            name="ondersteuning"
-                            value="botten"
-                        />
-                        <label for="botten">Botten</label>
-                        <input
-                            type="checkbox"
-                            id="gewrichten"
-                            name="ondersteuning"
-                            value="gewrichten"
-                        />
-                        <label for="gewrichten">Gewrichten</label>
+
+                        <div class="input-wrapper">
+                            <input
+                                type="checkbox"
+                                id="cholesterol"
+                                name="ondersteuning"
+                                value="cholesterol"
+                            />
+                            <label for="cholesterol"
+                                ><img
+                                    src="placeholder.svg"
+                                    alt=""
+                                />Cholesterol</label
+                            >
+                            <input
+                                type="checkbox"
+                                id="hart"
+                                name="ondersteuning"
+                                value="hart"
+                            />
+
+                            <label for="hart"
+                                ><img src="placeholder.svg" alt="" />Hart en
+                                bloedvaten</label
+                            >
+
+                            <input
+                                type="checkbox"
+                                id="botten"
+                                name="ondersteuning"
+                                value="botten"
+                            />
+                            <label for="botten"
+                                ><img src="placeholder.svg" alt="" />
+                                Botten</label
+                            >
+                            <input
+                                type="checkbox"
+                                id="gewrichten"
+                                name="ondersteuning"
+                                value="gewrichten"
+                            />
+                            <label for="gewrichten"
+                                ><img
+                                    src="placeholder.svg"
+                                    alt=""
+                                />Gewrichten</label
+                            >
+                        </div>
                     </fieldset>
 
                     <fieldset class="step-item">
@@ -676,43 +700,64 @@
                             Op welke gebieden voel je dat je extra ondersteuning
                             nodig hebt?
                         </legend>
-                        <input
-                            type="checkbox"
-                            id="prostaat"
-                            name="ondersteuning"
-                            value="prostaat"
-                        />
-                        <label for="prostaat">Prostaat</label>
-                        <input
-                            type="checkbox"
-                            id="overgang"
-                            name="ondersteuning"
-                            value="overgang"
-                        />
-                        <label for="overgang">Overgang</label>
-                        <input
-                            type="checkbox"
-                            id="blaas"
-                            name="ondersteuning"
-                            value="blaas"
-                        />
-                        <label for="blaas">Blaas</label>
-                        <input
-                            type="checkbox"
-                            id="nhh"
-                            name="ondersteuning"
-                            value="nhh"
-                        />
-                        <label for="nhh">Nagel, huid en haar</label>
-                        <input
-                            type="checkbox"
-                            id="dss"
-                            name="ondersteuning"
-                            value="dss"
-                        />
-                        <label for="dss"
-                            >Darmen, spijsvertering en/of stoelgang</label
-                        >
+                        <div class="input-wrapper">
+                            <input
+                                type="checkbox"
+                                id="prostaat"
+                                name="ondersteuning"
+                                value="prostaat"
+                            />
+                            <label for="prostaat"
+                                ><img
+                                    src="placeholder.svg"
+                                    alt=""
+                                />Prostaat</label
+                            >
+                            <input
+                                type="checkbox"
+                                id="overgang"
+                                name="ondersteuning"
+                                value="overgang"
+                            />
+                            <label for="overgang"
+                                ><img
+                                    src="placeholder.svg"
+                                    alt=""
+                                />Overgang</label
+                            >
+                            <input
+                                type="checkbox"
+                                id="blaas"
+                                name="ondersteuning"
+                                value="blaas"
+                            />
+                            <label for="blaas"
+                                ><img
+                                    src="placeholder.svg"
+                                    alt=""
+                                />Blaas</label
+                            >
+                            <input
+                                type="checkbox"
+                                id="nhh"
+                                name="ondersteuning"
+                                value="nhh"
+                            />
+                            <label for="nhh"
+                                ><img src="placeholder.svg" alt="" />Nagel, huid
+                                en haar</label
+                            >
+                            <input
+                                type="checkbox"
+                                id="dss"
+                                name="ondersteuning"
+                                value="dss"
+                            />
+                            <label for="dss"
+                                ><img src="placeholder.svg" alt="" />Darmen,
+                                spijsvertering en/of stoelgang</label
+                            >
+                        </div>
                     </fieldset>
                 </fieldset>
 
@@ -744,28 +789,31 @@
                         placeholder="0612345678"
                     />
 
-                    <input
-                        type="checkbox"
-                        id="niewsbrief"
-                        name="niewsbrief"
-                        value="niewsbrief"
-                    />
-                    <label for="niewsbrief"
-                        >Schrijf me in voor de niewsbrief.</label
-                    >
-
-                    <input
-                        type="checkbox"
-                        id="niewsbrief"
-                        name="niewsbrief"
-                        value="niewsbrief"
-                    />
-                    <label for="niewsbrief"
-                        >Ik ga akkoord met de <a href="#">privacy policy</a>.
-                    </label>
+                    <div class="check-wrapper">
+                        <input
+                            type="checkbox"
+                            id="niewsbrief"
+                            name="niewsbrief"
+                            value="niewsbrief"
+                        />
+                        <label for="niewsbrief"
+                            >Schrijf me in voor de niewsbrief.</label
+                        >
+                    </div>
+                    <div class="check-wrapper">
+                        <input
+                            type="checkbox"
+                            id="niewsbrief"
+                            name="niewsbrief"
+                            value="niewsbrief"
+                        />
+                        <label for="niewsbrief"
+                            >Ik ga akkoord met de
+                            <a href="#">privacy policy</a>.
+                        </label>
+                    </div>
+                    <button class="send-data">Verzenden</button>
                 </fieldset>
-
-                <button>Verzenden</button>
             </form>
 
             <footer>
